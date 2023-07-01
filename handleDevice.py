@@ -16,15 +16,18 @@ class InputHandler:
     
     def handle_input_word(self, word):
         try:
-            if self.mode == 'default':
+            if word == 'strike':
+                self.device_data['strike'] += 1
+                
+            elif self.mode == 'default':
                 if word not in self.module_data:
                     raise ValueError("Invalid Module Name")
                 
                 self.mode = word
                 self.working_modules[word] = self.module_data[word](self)
 
-            elif word == 'exit':
-                self.working_modules.remove(self.mode)
+            elif word == 'complete':
+                del self.working_modules[self.mode]
                 self.mode = 'default'
 
             else:
@@ -47,7 +50,3 @@ class InputHandler:
         module_dict = dict(list(map(lambda x: (getattr(x, "MODULE_NAME"), getattr(x, getattr(x, "CLASS_NAME"))), modules_available)))
         return module_dict
         
-
-a = InputHandler()
-a.process_input(['initialize', 'ports', 'rj45'])
-
