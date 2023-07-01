@@ -1,10 +1,11 @@
-from module import Module
-from tools.toOrdinal import toOrdinal
-class ModuleWires(Module):
-    name = "Wires"
-    
+from .tools.toOrdinal import toOrdinal
+
+MODULE_NAME = "wires"
+CLASS_NAME = "ModuleWires"
+
+class ModuleWires():
     def __init__(self, device):
-        super(device)
+        self.device = device
         self.data = []
 
     def process_wires(self):
@@ -54,6 +55,6 @@ class ModuleWires(Module):
         return text
     def handle(self, word):
         if word == 'space':
-            return ModuleWires.process_wires()
+            return self.process_wires()
         else:
             self.data.append(word)

@@ -1,11 +1,12 @@
-from module import Module
-class ModuleButton(Module):
-    name = "buttons"
-    VALID_WORDS = set("abort", "detonate", "hold", "press")
-    VALID_COLORS = set("blue", "red", "white", "yellow")
+MODULE_NAME = "buttons"
+CLASS_NAME = "ModuleButton"
+
+class ModuleButton():
+    VALID_WORDS = {"abort", "detonate", "hold", "press"}
+    VALID_COLORS = {"blue", "red", "white", "yellow"}
 
     def __init__(self, device):
-        super(device)
+        self.device = device
         self.word = None
         self.color = None
         self.mode = 'button'
@@ -45,3 +46,5 @@ class ModuleButton(Module):
             if self.word != None and self.color != None:
                 ModuleButton.process_button()
                 self.mode = "strip"
+
+ModuleButton('h')

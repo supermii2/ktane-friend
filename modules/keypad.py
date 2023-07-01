@@ -1,47 +1,51 @@
-
 #See Readme for button identification
 #TODO: add readme
-from module import Module
-class ModuleKeypad(Module):
-    VALID_KEYPADS = set("quebec", 
-                        "alpha", 
-                        "lambda", 
-                        "bolt", 
-                        "cat", 
-                        "hotel", 
-                        "back", 
-                        "echo", 
-                        "swirl", 
-                        "white", 
-                        "question", 
-                        "copyright",
-                        "nose",
-                        "xray",
-                        "three",
-                        "paragraph",
-                        "six",
-                        "bravo",
-                        "smile",
-                        "trident",
-                        "front",
-                        "snake",
-                        "black",
-                        "equals",
-                        "ash",
-                        "omega",
-                        "november")
+
+MODULE_NAME = "keypad"
+CLASS_NAME = "ModuleKeypad"
+
+class ModuleKeypad():
+    VALID_KEYPADS = {
+        "quebec", 
+        "alpha", 
+        "lambda", 
+        "bolt", 
+        "cat", 
+        "hotel", 
+        "back", 
+        "echo", 
+        "swirl", 
+        "white", 
+        "question", 
+        "copyright",
+        "nose",
+        "xray",
+        "three",
+        "paragraph",
+        "six",
+        "bravo",
+        "smile",
+        "trident",
+        "front",
+        "snake",
+        "black",
+        "equals",
+        "ash",
+        "omega",
+        "november"
+    }
     
-    VALID_SEQUENCES = set(
+    VALID_SEQUENCES = [
         ["quebec", "alpha", "lambda", "bolt", "cat", "hotel", "back"],
         ["echo", "quebec", "back", "swirl", "white", "hotel", "question"],
         ["copyright", "nose", "swirl", "xray", "three", "lambda", "white"],
         ["six", "paragraph", "bravo", "cat", "xray", "question", "smile"],
         ["trident", "smile", "bravo", "front", "paragraph", "snake", "black"],
         ["six", "echo", "equals", "ash", "trident", "november", "omega"]
-    )
+    ]
 
     def __init__(self, device):
-        super(device)
+        self.device = device
         self.progress = set()
 
 
@@ -69,4 +73,4 @@ class ModuleKeypad(Module):
 
         if len(self.progress) == 4:
             ModuleKeypad.process_keypads()
-        
+    
